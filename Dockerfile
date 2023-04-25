@@ -33,6 +33,8 @@ RUN \
     ln -s /opt/kubevirt/virtctl /usr/local/bin/virtctl && \
     # install kustomize
     ln -s /opt/kustomize/kustomize /usr/local/bin/kustomize && \
+    # install argocd
+    ln -s /opt/argocd/argocd /usr/local/bin/argocd && \
     # install bash completions
     kubectl completion bash > $COMPDIR/kubectl && \
     oc completion bash > $COMPDIR/oc && \
