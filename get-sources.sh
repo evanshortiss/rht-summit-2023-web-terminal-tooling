@@ -63,6 +63,10 @@ echo "Extracted kubectl ${KUBECTL_VER}"
 
 rm -rf "${TMPDIR:?}"/*
 
+echo "Downloading argocd ${ARGO_VER}"
+wget -q -O $CONTAINER_USR_BIN_DIR/argocd "https://github.com/argoproj/argo-cd/releases/download/v$ARGO_VER/argocd-linux-amd64"
+rm -rf "${TMPDIR:?}"/*
+
 echo "Downloading helm ${HELM_VER}"
 curl -sSfL --insecure --remote-name-all \
   "${OPENSHIFT_CLIENTS_URL}/helm/${HELM_VER}/sha256sum.txt" \
@@ -122,12 +126,6 @@ echo "Downloading kustomize ${KUSTOMIZE_VER}"
 mkdir -p "$CONTAINER_OPT_DIR/kustomize/"
 wget -q -O- "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VER}/kustomize_v${KUSTOMIZE_VER}_linux_amd64.tar.gz" | \
   tar xz -C "$CONTAINER_OPT_DIR/kustomize/"
-rm -rf "${TMPDIR:?}"/*
-chmod -R +x "${CONTAINER_USR_BIN_DIR}"
-
-echo "Downloading argocd ${ARGO_VER}"
-mkdir -p "$CONTAINER_OPT_DIR/argocd/"
-wget -q -O- "https://github.com/argoproj/argo-cd/releases/download/$ARGO_VER/argocd-linux-amd64" > $CONTAINER_OPT_DIR/argocd/argocd
 rm -rf "${TMPDIR:?}"/*
 chmod -R +x "${CONTAINER_USR_BIN_DIR}"
 
