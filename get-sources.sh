@@ -126,9 +126,9 @@ rm -rf "${TMPDIR:?}"/*
 chmod -R +x "${CONTAINER_USR_BIN_DIR}"
 
 echo "Downloading argocd ${ARGO_VER}"
-mkdir -p "$CONTAINER_OPT_DIR/kustomize/"
-wget -q -O- "https://github.com/argoproj/argo-cd/releases/download/$ARGO_CLI_VERSION/argocd-linux-amd64" | \
-  tar xz -C "$CONTAINER_OPT_DIR/argocd/"
+mkdir -p "$CONTAINER_OPT_DIR/argocd/"
+echo "URL: https://github.com/argoproj/argo-cd/releases/download/$ARGO_VER/argocd-linux-amd64"
+wget -q -O- "https://github.com/argoproj/argo-cd/releases/download/$ARGO_VER/argocd-linux-amd64" > $CONTAINER_OPT_DIR/argocd/argocd
 rm -rf "${TMPDIR:?}"/*
 chmod -R +x "${CONTAINER_USR_BIN_DIR}"
 
