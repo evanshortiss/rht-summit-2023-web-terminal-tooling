@@ -66,6 +66,11 @@ if command -v rhoas &>/dev/null; then
   append_ver "rhoas    |${RHOAS_VER#v}     |Red Hat OpenShift Application Services CLI"
 fi
 
+if command -v argocd &>/dev/null; then
+  ARGO_VER=$(argocd version | grep -Eo 'v?[0-9]+\.[0-9]+\.[0-9]+' || true)
+  append_ver "argocd    |${ARGO_VER#v}     |Argo CD CLI"
+fi
+
 JQ_VER=$(jq --version)
 JQ_VER=${JQ_VER#jq-}
 append_ver "jq       |${JQ_VER#v}        |jq"
