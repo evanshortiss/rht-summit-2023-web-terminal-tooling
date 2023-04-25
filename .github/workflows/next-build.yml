@@ -51,5 +51,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          quay.io/wto/web-terminal-tooling:next
-          quay.io/wto/web-terminal-tooling:sha-${{ steps.git-sha.outputs.sha }}
+          quay.io/evanshortiss/summit-2023-web-terminal-tooling:latest
+          quay.io/evanshortiss/summit-2023-web-terminal-tooling:sha-${{ steps.git-sha.outputs.sha }}
