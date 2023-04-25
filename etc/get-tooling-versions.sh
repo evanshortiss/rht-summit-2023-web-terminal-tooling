@@ -67,7 +67,7 @@ if command -v rhoas &>/dev/null; then
 fi
 
 if command -v argocd &>/dev/null; then
-  ARGO_VER=$(argocd version | grep -Eo 'v?[0-9]+\.[0-9]+\.[0-9]+' || true)
+  ARGO_VER=$(argocd version | grep -Eo -m 1 'v?[0-9]+\.[0-9]+\.[0-9]+' || true)
   append_ver "argocd    |${ARGO_VER#v}     |Argo CD CLI"
 fi
 
