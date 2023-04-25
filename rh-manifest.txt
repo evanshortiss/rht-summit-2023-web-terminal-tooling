@@ -8,3 +8,4 @@ knative 1.5.0 https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/serve
 rhoas 0.52.0 https://github.com/redhat-developer/app-services-cli/tree/v0.52.0
 submariner 0.14.1 https://github.com/submariner-io/subctl/tree/v0.14.1
 kubevirt 0.58.0 https://github.com/kubevirt/kubevirt/tree/v0.58.0
+argocd 2.3.17 https://github.com/argoproj/argo-cd/tree/v2.3.17

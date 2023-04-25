@@ -125,6 +125,13 @@ wget -q -O- "https://github.com/kubernetes-sigs/kustomize/releases/download/kust
 rm -rf "${TMPDIR:?}"/*
 chmod -R +x "${CONTAINER_USR_BIN_DIR}"
 
+echo "Downloading argocd ${ARGO_VER}"
+mkdir -p "$CONTAINER_OPT_DIR/kustomize/"
+wget -q -O- "https://github.com/argoproj/argo-cd/releases/download/$ARGO_CLI_VERSION/argocd-linux-amd64" | \
+  tar xz -C "$CONTAINER_OPT_DIR/argocd/"
+rm -rf "${TMPDIR:?}"/*
+chmod -R +x "${CONTAINER_USR_BIN_DIR}"
+
 cd "$PROJECT_ROOT"
 tar -czf container-root-x86_64.tgz -C "$CONTAINER_ROOT_RELATIVE_PATH" .
 if [[ "$updateSourcesFlag" = "true" ]]; then
@@ -145,6 +152,7 @@ rm -f rh-manifest.txt || true
   echo "rhoas ${RHOAS_VER} https://github.com/redhat-developer/app-services-cli/tree/v${RHOAS_VER}"
   echo "submariner ${SUBMARINER_VER} https://github.com/submariner-io/subctl/tree/v${SUBMARINER_VER}"
   echo "kubevirt ${KUBEVIRT_VER} https://github.com/kubevirt/kubevirt/tree/v${KUBEVIRT_VER}"
+  echo "argocd ${ARGO_VER} https://github.com/argoproj/argo-cd/tree/v${ARGO_VER}"
 } >> rh-manifest.txt
 
 rm -rf "$CONTAINER_ROOT_DIR"
